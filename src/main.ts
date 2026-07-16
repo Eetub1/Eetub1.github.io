@@ -51,9 +51,9 @@ function resize() {
 }
 
 
-function getRandomRow(): number {
+/*function getRandomRow(): number {
     return Math.floor(Math.random() * rows) // return a random row in range [0,row[ where the num is an int
-}
+}*/
 
 
 function animate(timeStamp: number) {
