@@ -3,7 +3,7 @@ import "./style.css"
 let canvas: HTMLCanvasElement
 let ctx: CanvasRenderingContext2D
 
-const cellSize = 4
+const cellSize = 12
 let cols = 0
 let rows = 0
 
@@ -18,7 +18,7 @@ function getRandomChar() {
     return chars[index]
 }
 
- 
+
 function start() {
     canvas = document.querySelector<HTMLCanvasElement>("#canvas")!
     ctx = canvas.getContext("2d")!
@@ -28,10 +28,14 @@ function start() {
     requestAnimationFrame(animate)
 }
  
- 
+
 function resize() {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
+
+    ctx.textBaseline = "top"
+    ctx.fillStyle = "#00FF41"
+    ctx.font = `${cellSize}px 'JetBrains Mono', monospace`
  
     cols = Math.floor(canvas.width / cellSize)
     rows = Math.floor(canvas.height / cellSize)
@@ -47,12 +51,10 @@ function animate(timeStamp: number) {
         timer = 0
         ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-        for (let row = 0; row < rows; row += cellSize) {
-            for (let col = 0; col < cols; col += cellSize) {
+        for (let row = 0; row < rows; row += 1) {
+            for (let col = 0; col < cols; col += 1) {
                 ctx.fillText(getRandomChar(), col * cellSize, row * cellSize)
-                ctx.textBaseline = "top"
-                ctx.fillStyle = "#00FF41"
-            } 
+            }
         }
     }
     requestAnimationFrame(animate)
