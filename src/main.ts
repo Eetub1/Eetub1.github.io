@@ -3,16 +3,19 @@ import "./style.css"
 let canvas: HTMLCanvasElement
 let ctx: CanvasRenderingContext2D
 
-const cellSize = 12
+const cellSize = 18
 let cols = 0
 let rows = 0
 
+let fps = 24
 let lastTime = 0
-let interval = 1000 / 20 // how many ms between animationframes
+let interval = 1000 / fps // how many ms between animationframes
 let timer = 0
 
 // Contains the row position of every single character
 let drops: number[]
+// What character is at each column
+let dropChar: string[]
 
 const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ"
 
@@ -44,14 +47,12 @@ function resize() {
     rows = Math.floor(canvas.height / cellSize)
 
     drops = Array.from({length: cols}, () => Math.floor(Math.random() * -rows))
+    dropChar = Array.from({length: cols}).fill("").map(_ => getRandomChar())
 }
 
-// create an array of length cols so that it has indexes [0, ... , cols - 1]
-// the value in each position tells to which row the character is placed
 
 function getRandomRow(): number {
-    // return a random row in range [0,row[ where the num is an int
-    return Math.floor(Math.random() * rows)
+    return Math.floor(Math.random() * rows) // return a random row in range [0,row[ where the num is an int
 }
 
 
@@ -64,20 +65,17 @@ function animate(timeStamp: number) {
         timer = 0
         ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-        /*for (let col = 0; col < cols; col += 1) {
-            ctx.fillText("A", col * cellSize, getRandomRow() * cellSize)
-        }*/
-
         const maxRow = rows
         for (let i = 0; i < drops.length; i++) {
             const rowVal = drops[i]
 
             if (rowVal >= maxRow) {
                 drops[i] = 0
+                dropChar[i] = getRandomChar()
             } else {
                 drops[i] += 1
             }
-            ctx.fillText(getRandomChar(), i * cellSize, rowVal * cellSize)
+            ctx.fillText(dropChar[i], i * cellSize, rowVal * cellSize)
         } 
     }
     requestAnimationFrame(animate)

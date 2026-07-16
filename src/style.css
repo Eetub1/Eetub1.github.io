@@ -7,6 +7,7 @@ body {
 }
 
 #app {
+    position: relative;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -19,11 +20,20 @@ body {
     z-index: -1;
 }
 
-/*header, footer {    
+#content {
+    margin: auto;
+    text-align: center;
+    padding: 2rem 3rem;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+    border: 1px solid green
+}
+
+header, footer {    
     border: 1px solid blue;
     padding: 15px;
 }
 
 footer {
     margin-top: auto;
-}*/
+}
