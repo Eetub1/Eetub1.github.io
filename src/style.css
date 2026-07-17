@@ -6,6 +6,27 @@ body {
     font-family: 'JetBrains Mono', monospace;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.imageContainer {
+    max-width: 400px;
+}
+
+.project {
+    margin: 0;
+    border: 1px solid blue
+}
+
+#personalProjectsContainer, #schoolProjectsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
 #app {
     position: relative;
     display: flex;
@@ -35,5 +56,5 @@ header, footer {
 }
 
 footer {
-    margin-top: auto;
+    margin-top: 20px;
 }
