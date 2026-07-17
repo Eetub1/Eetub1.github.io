@@ -1,4 +1,7 @@
 import "./style.css"
+import { mountLayout } from "./layout"
+
+mountLayout()
 
 let canvas: HTMLCanvasElement
 let ctx: CanvasRenderingContext2D
@@ -7,7 +10,7 @@ const cellSize = 18
 let cols = 0
 let rows = 0
 
-let fps = 24
+let fps = 35
 let lastTime = 0
 let interval = 1000 / fps // how many ms between animationframes
 let timer = 0
@@ -49,11 +52,6 @@ function resize() {
     drops = Array.from({length: cols}, () => Math.floor(Math.random() * -rows))
     dropChar = Array.from({length: cols}).fill("").map(_ => getRandomChar())
 }
-
-
-/*function getRandomRow(): number {
-    return Math.floor(Math.random() * rows) // return a random row in range [0,row[ where the num is an int
-}*/
 
 
 function animate(timeStamp: number) {
