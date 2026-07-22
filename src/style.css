@@ -12,13 +12,17 @@ img {
     display: block;
 }
 
-.imageContainer {
-    max-width: 400px;
-}
-
 .project {
     margin: 0;
-    border: 1px solid blue
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.imageContainer {
+    max-width: 400px;
+    border: 1px solid blue;
 }
 
 #personalProjectsContainer, #schoolProjectsContainer {
@@ -47,11 +51,9 @@ img {
     padding: 2rem 3rem;
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(2px);
-    border: 1px solid green
 }
 
 header, footer {    
-    border: 1px solid blue;
     padding: 15px;
 }
 
@@ -59,8 +61,8 @@ footer {
     margin-top: 20px;
 }
 
-/*AI generated styles for cv*/
 
+/*AI generated styles for cv*/
 .cv {
     text-align: left;
     max-width: 700px;
@@ -70,11 +72,6 @@ footer {
     text-align: center;
     border-bottom: 1px solid #00FF41;
     padding-bottom: 1rem;
-}
-
-.cv-role {
-    margin: 0.25rem 0 1rem;
-    opacity: 0.75;
 }
 
 .cv-contact {
